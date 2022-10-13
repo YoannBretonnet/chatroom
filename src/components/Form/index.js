@@ -14,7 +14,7 @@ function Form() {
         dispatch(changeInputMessage(event.target.value));
       };
       
-      const handleSubmit = (event) => {
+      const handleSubmit = (event) =>  {
           event.preventDefault();
           dispatch(addMessage());
       }
