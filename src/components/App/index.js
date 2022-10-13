@@ -1,13 +1,15 @@
 // == Import
-import reactLogo from './react-logo.svg';
 import './styles.css';
+
+import Form from '../Form';
+import Messages from 'src/components/Messages';
 
 // == Composant
 function App() {
   return (
     <div className="app">
-
-      <h1>Composant : App</h1>
+      <Messages />
+      <Form />
     </div>
   );
 }
