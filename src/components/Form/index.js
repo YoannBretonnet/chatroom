@@ -2,29 +2,30 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { changeInputMessage } from 'src/store/actions';
-import { changeInputMessage } from 'src/store/actions';
-
-const dispatch = useDispatch();
-
-const value = useSelector((state) => state[inputName]);
-
-const handleChange = (event) => {
-  dispatch(changeInputMessage);
-};
-
-const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(addMessage);
-}
+import { addMessage } from 'src/store/actions';
 
 function Form() {
+
+    const dispatch = useDispatch();
+    const value = useSelector((state) => state.inputMessageValue);
+
+    const handleChange = (event) => {
+        event.preventDefault();
+        dispatch(changeInputMessage(event.target.value));
+      };
+      
+      const handleSubmit = (event) => {
+          event.preventDefault();
+          dispatch(addMessage());
+      }
+
     return (
         <form onSubmit={handleSubmit}>
-            <input>
+            <input
             type="text"
             value={value}
             onChange= {handleChange}
-            </input>
+            />
             <button type="submit">
                 {'>'}
             </button>
