@@ -1,7 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
 
-import {CHANGE_INPUT_MESSAGE} from './actions'
+import {CHANGE_INPUT_MESSAGE, ADD_MESSAGE} from './actions'
+import { getHighestId } from './selectors';
 
 const initialState = {
     messages: [
@@ -26,18 +27,23 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 inputMessageValue: action.newValue,
             };
-        case 'ADD_MESSAGE':
+        case ADD_MESSAGE:
             return {
+                // je déverse mon ancien state
                 ...state,
-                inputMessageValue:'',
                 messages: [
+                    // je récupère les anciens message
                     ...state.messages,
+                    // puis j'ajoute le nouveau
                     {
-                        id: 4,
+                        // je récupère le plus grand id et j'ajoute 1
+                        id: getHighestId(state) + 1,
                         content: state.inputMessageValue,
                         author: 'Toto',
                     }
-                ]
+                ],
+                // je remets la valeur de l'input à vide
+                inputMessageValue:'',
             };
             default:
                 return state;
