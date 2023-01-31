@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 import './messages.scss'
 
+import Message from './Message';
+
 function index() {
 
     const messagesArray = useSelector((state) => state.messages)
@@ -8,14 +10,12 @@ function index() {
     return (
         <div className="messages">
             {
-                messagesArray.map(message => 
-                    <div 
-                        key={message.id}
-                        className="message"
-                        >
-                    <div className="message__author">{message.author}</div>
-                    <div className="message__content">{message.content}</div>
-                    </div>
+                messagesArray.map(message => (
+                  <Message 
+                  key= {message.id}
+                  {...message}
+                  />
+                )
                 )
             }
         </div>

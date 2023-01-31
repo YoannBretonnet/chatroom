@@ -5,10 +5,12 @@ import {changeInputMessage} from 'src/store/actions';
 function Form () {
   const inputMessage = useSelector ((state) => state.inputMessageValue)
   const dispatch = useDispatch();
+  
   const handleSubmit = (event) => {
     event.preventDefault();  
     dispatch({type: 'ADD_MESSAGE'});
   };
+  
 
     return (
       <form 
