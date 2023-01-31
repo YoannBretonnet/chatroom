@@ -18,9 +18,17 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    // todo acitons
+    switch (action.type) {
+        case 'CHANGE_INPUT_MESSAGE' :
+            return  {
+                ...state,
+                inputMessageValue: action.newValue,
+            };
+            default:
+                return state;
+    }
 
-    return state;
+ 
 }
 
 const store = createStore(
