@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
 
+import {CHANGE_INPUT_MESSAGE} from './actions'
+
 const initialState = {
     messages: [
         {
@@ -19,7 +21,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'CHANGE_INPUT_MESSAGE' :
+        case CHANGE_INPUT_MESSAGE :
             return  {
                 ...state,
                 inputMessageValue: action.newValue,

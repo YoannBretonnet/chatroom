@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
+import {changeInputMessage} from 'src/store/actions';
+
 function Form () {
   const inputMessage = useSelector ((state) => state.inputMessageValue)
   const dispatch = useDispatch();
@@ -10,10 +12,8 @@ function Form () {
           type='text'
           value={inputMessage}
           onChange={(event) => 
-          dispatch({
-            type: 'CHANGE_INPUT_MESSAGE',
-            newValue: event.target.value
-          })}
+            dispatch(changeInputMessage(event.target.value))
+            }
         />
         <button type='submit'> {">"} </button>
      </form>
