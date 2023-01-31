@@ -3,14 +3,14 @@ import './app.scss';
 
 // import composants
 import Form from 'src/components/Form';
-import Message from 'src/components/Message';
+import Messages from 'src/components/Messages';
 
 // == Composant
 function App() {
   return (
     <div className="app">
+      <Messages />
       <Form />
-      <Message />
     </div>
   );
 }
