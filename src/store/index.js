@@ -11,7 +11,7 @@ const initialState = {
             content: 'Salut!'
         },
         {
-            id: 1,
+            id: 2,
             author: 'Yoyo',
             content: 'ça va?'
         },
@@ -25,6 +25,19 @@ const reducer = (state = initialState, action) => {
             return  {
                 ...state,
                 inputMessageValue: action.newValue,
+            };
+        case 'ADD_MESSAGE':
+            return {
+                ...state,
+                inputMessageValue:'',
+                messages: [
+                    ...state.messages,
+                    {
+                        id: 4,
+                        content: state.inputMessageValue,
+                        author: 'Toto',
+                    }
+                ]
             };
             default:
                 return state;
