@@ -1,3 +1,24 @@
+@use 'src/styles/vars';
+
 form {
     padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    ::placeholder {
+        color: vars.$lighterColor;
+    }
+   
+}
+
+input {
+    flex-grow: 1;
+    padding: 1rem;
+    border: none;
+  
+}
+
+button {
+    padding: 1rem;
+    border: none;
+
 }

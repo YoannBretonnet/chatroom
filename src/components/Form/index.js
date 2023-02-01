@@ -20,6 +20,7 @@ function Form () {
         <input 
           type='text'
           value={inputMessage}
+          placeholder= 'Saisissez votre message...'
           onChange={(event) => 
             dispatch(changeInputMessage(event.target.value))
             }
