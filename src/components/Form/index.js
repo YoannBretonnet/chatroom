@@ -28,9 +28,11 @@ function Form () {
 
     return (
       <form 
+        className="message-form"
         onSubmit= {handleSubmit}
         >
         <input 
+          className="message-input"
           ref= {inputRef}
           required
           type='text'
@@ -40,7 +42,10 @@ function Form () {
             dispatch(changeInputMessage(event.target.value))
             }
         />
-        <button type='submit' > 
+        <button 
+        type='submit'
+        className="message-button"
+         > 
         <Send 
           size= {25}
         />

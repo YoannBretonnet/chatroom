@@ -4,6 +4,7 @@ import './app.scss';
 // import composants
 import Form from 'src/components/Form';
 import Messages from 'src/components/Messages';
+import Settings from 'src/components/Settings';
 
 // == Composant
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <div className="app">
       <Messages />
       <Form />
+      <Settings />
     </div>
   );
 }

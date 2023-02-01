@@ -1,6 +1,6 @@
 @use 'src/styles/vars';
 
-form {
+.message-form {
     margin-top: 1rem;
     padding: 1rem 3rem;
     display: flex;
@@ -10,7 +10,7 @@ form {
    
 }
 
-input {
+.message-input {
     flex-grow: 1;
     padding: 1rem;
     border: none;
@@ -23,7 +23,7 @@ input {
   
 }
 
-button {
+.message-button {
     padding: 1rem;
     border: none;
     background-color: white;
