@@ -2,13 +2,23 @@ import { useSelector } from 'react-redux';
 import './messages.scss'
 
 import Message from './Message';
+import { useEffect, useRef } from 'react';
 
-function index() {
+function Messages() {
 
     const messagesArray = useSelector((state) => state.messages)
+    const messagesRef = useRef(null);
+    
+    // Je crée un useEffect pour que le dernier message se retrouve toujours en bas à chaque nouveau rendu
+    useEffect( () => {
+    const messagesElement = messagesRef.current;
+    messagesElement.scrollTop = messagesElement.scrollHeight;
+    },[messagesArray]);
 
     return (
-        <div className="messages">
+        <div className="messages" 
+        ref= {messagesRef}
+        >
             {
                 messagesArray.map(message => (
                   <Message 
@@ -23,4 +33,4 @@ function index() {
     );
 }
 
-export default index;
+export default Messages;

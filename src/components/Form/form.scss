@@ -1,9 +1,9 @@
 @use 'src/styles/vars';
 
 form {
+    margin-top: 1rem;
     padding: 1rem 3rem;
     display: flex;
-    align-items: center;
     ::placeholder {
         color: vars.$lighterColor;
     }
@@ -14,11 +14,23 @@ input {
     flex-grow: 1;
     padding: 1rem;
     border: none;
+    color: vars.$primaryColor;
+    font-size: 1rem;
+  
+    &:focus {
+    color: vars.$primaryColor;
+    }
   
 }
 
 button {
     padding: 1rem;
     border: none;
+    background-color: white;
+    color: vars.$primaryColor;
+
+    &:hover {
+        color: gray;
+    }
 
 }
