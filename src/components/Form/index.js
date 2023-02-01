@@ -17,7 +17,7 @@ function Form () {
   }, []);
   
   const handleSubmit = (event) => {
-    event.preventDefault();  
+    event.preventDefault();   
 
     // on vérifie que la string n'est pas consituée d'espaces vides
     if (inputMessage.trim() !== '') {
