@@ -18,7 +18,11 @@ function Form () {
   
   const handleSubmit = (event) => {
     event.preventDefault();  
+
+    // on vérifie que la string n'est pas consituée d'espaces vides
+    if (inputMessage.trim() !== '') {
     dispatch({type: 'ADD_MESSAGE'});
+    }
   };
   
 
@@ -28,6 +32,7 @@ function Form () {
         >
         <input 
           ref= {inputRef}
+          required
           type='text'
           value={inputMessage}
           placeholder= 'Saisissez votre message...'
@@ -35,7 +40,7 @@ function Form () {
             dispatch(changeInputMessage(event.target.value))
             }
         />
-        <button type='submit' disabled={!inputMessage}> 
+        <button type='submit' > 
         <Send 
           size= {25}
         />
