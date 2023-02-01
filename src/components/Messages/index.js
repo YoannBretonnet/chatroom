@@ -11,8 +11,7 @@ function Messages() {
     
     // Je crée un useEffect pour que le dernier message se retrouve toujours en bas à chaque nouveau rendu
     useEffect( () => {
-    const messagesElement = messagesRef.current;
-    messagesElement.scrollTop = messagesElement.scrollHeight;
+    messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
     },[messagesArray]);
 
     return (

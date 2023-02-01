@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useRef } from 'react';
 
 import {changeInputMessage} from 'src/store/actions';
 import './form.scss';
@@ -9,6 +10,11 @@ import {Send} from 'react-feather';
 function Form () {
   const inputMessage = useSelector ((state) => state.inputMessageValue)
   const dispatch = useDispatch();
+  const inputRef = useRef(null);
+
+  useEffect( () => {
+    inputRef.current.focus();
+  }, []);
   
   const handleSubmit = (event) => {
     event.preventDefault();  
@@ -21,6 +27,7 @@ function Form () {
         onSubmit= {handleSubmit}
         >
         <input 
+          ref= {inputRef}
           type='text'
           value={inputMessage}
           placeholder= 'Saisissez votre message...'
