@@ -1,16 +1,28 @@
-.messages {
+@use 'src/styles/vars';
 
+.messages {
+overflow:auto
 }
 
 .message {
-    margin: 1rem 0;
+    padding: 1rem 1rem;
 
     &__author {
         font-weight: bold;
+        color: vars.$darkerColor;
+        padding-bottom: 0.8rem;
+        padding-left: 2.8rem;
     }
 
     &__content {
         border: 1px solid black;
-        padding: 1rem
+        padding: 1rem;
+        margin-left: 2rem;
+        background-color: white;
+        color: vars.$primaryColor;
+        border: none;
+        border-radius: 1rem;
+        display: inline-block;
+
     }
 }

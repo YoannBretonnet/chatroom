@@ -13,6 +13,7 @@ function index() {
                 messagesArray.map(message => (
                   <Message 
                   key= {message.id}
+                  // je déverse tout l'objet message dans les props du composant
                   {...message}
                   />
                 )

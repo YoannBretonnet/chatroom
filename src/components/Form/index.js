@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import {changeInputMessage} from 'src/store/actions';
+import './form.scss'
 
 function Form () {
   const inputMessage = useSelector ((state) => state.inputMessageValue)
