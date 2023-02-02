@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
 
-import {CHANGE_INPUT_MESSAGE, ADD_MESSAGE, SWITCH_SETTINGS} from './actions'
+import {CHANGE_INPUT_MESSAGE, ADD_MESSAGE, TOGGLE_SETTINGS, CHANGE_EMAIL_VALUE} from './actions'
 import { getHighestId } from './selectors';
 
 const initialState = {
@@ -18,7 +18,13 @@ const initialState = {
         },
     ],
     inputMessageValue: '',
-    settingsAreOpen: false,
+    settings: {
+        areOpen: false,
+        emailValue:'',
+        passwordValue: '',
+
+    }
+    
 };
 
 const reducer = (state = initialState, action) => {
@@ -46,11 +52,24 @@ const reducer = (state = initialState, action) => {
                 // je remets la valeur de l'input à vide
                 inputMessageValue:'',
             };
-        case SWITCH_SETTINGS:
+        case TOGGLE_SETTINGS:
             return {
                 ...state,
-                settingsAreOpen: !state.settingsAreOpen
+                settings: {
+                    ...state.settings,
+                    areOpen: !state.settings.areOpen
+                }
+                
             }
+        case CHANGE_EMAIL_VALUE:
+            return {
+                ...state,
+                settings: {
+                    ...state.settings,
+                    emailValue: action.newValue
+                }
+            }
+
             default:
                 return state;
     }

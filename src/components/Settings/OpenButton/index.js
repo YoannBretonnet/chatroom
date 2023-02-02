@@ -1,11 +1,11 @@
 import './openbutton.scss'
-import { switchSettings } from 'src/store/actions';
+import { toggleSettings } from 'src/store/actions';
 import { useDispatch } from "react-redux";
 
 function OpenButton() {
     const dispatch = useDispatch();
     const handleOnClick = () => {
-        dispatch(switchSettings());
+        dispatch(toggleSettings());
         }
 
     return (
