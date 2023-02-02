@@ -1,33 +1,35 @@
 import OpenButton from "./OpenButton";
 import { useSelector, useDispatch } from "react-redux";
-import { changeEmailValue } from 'src/store/actions';
+import { changeSettingsFields } from 'src/store/actions';
 import './settings.scss'
 
 function Settings() {
-    const isOpen = useSelector ((state) => state.settings.areOpen);
-    const emailValue = useSelector ((state) => state.settings.emailValue);
-    const passwordValue = useSelector ((state) => state.settings.passwordValue)
+    const {areOpen, emailValue, passwordValue} = useSelector ((state) => state.settings);
+      
     const dispatch = useDispatch();
 
     return (
         // affichage conditionnel si l'état du state settingsAreOpen est true
-        isOpen?
+        areOpen?
         <div className="settings">
             <OpenButton />
             <form
             className='settings-form'>
             <input
-            placeholder="Email"
+            placeholder="Email" 
             type='text'
             value={emailValue}
             onChange= {(event) => {
-                dispatch (changeEmailValue(event.target.value))
+                dispatch (changeSettingsFields(event.target.value, 'emailValue'))
             }}
             />
             <input
             placeholder="Mot de passe"
             type='password'
             value={passwordValue}
+            onChange= {(event) => {
+                dispatch (changeSettingsFields(event.target.value, 'passwordValue'))
+            }}
             />
             <button
             className='settings-form__button'

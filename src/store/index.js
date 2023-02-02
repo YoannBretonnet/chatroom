@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { createStore } from 'redux';
 
-import {CHANGE_INPUT_MESSAGE, ADD_MESSAGE, TOGGLE_SETTINGS, CHANGE_EMAIL_VALUE} from './actions'
+import {CHANGE_INPUT_MESSAGE, ADD_MESSAGE, TOGGLE_SETTINGS, CHANGE_SETTINGS_FIELDS} from './actions'
 import { getHighestId } from './selectors';
 
 const initialState = {
@@ -20,8 +20,8 @@ const initialState = {
     inputMessageValue: '',
     settings: {
         areOpen: false,
-        emailValue:'',
-        passwordValue: '',
+        emailValue:'fazfaz',
+        passwordValue: '213',
 
     }
     
@@ -61,12 +61,12 @@ const reducer = (state = initialState, action) => {
                 }
                 
             }
-        case CHANGE_EMAIL_VALUE:
+        case CHANGE_SETTINGS_FIELDS:
             return {
                 ...state,
                 settings: {
                     ...state.settings,
-                    emailValue: action.newValue
+                    [action.inputKey]: action.newValue
                 }
             }
 
