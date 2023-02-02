@@ -1,13 +1,13 @@
 @use 'src/styles/vars';
 
 .openbutton {
-    background-color: vars.$darkerColor;
+    background-color: white;
     border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
+    color: vars.$darkerColor;
+    margin-left: 0.5rem;
+    margin-top: 0.3rem;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 15px;
+    border-radius: 80%;
+    height: fit-content;
 }

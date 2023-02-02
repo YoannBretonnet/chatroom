@@ -1,0 +1,35 @@
+@use 'src/styles/vars';
+
+.settings {
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    height: 80px;
+    top: 0;
+    right: 0;
+    width: 15%;
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 0.3rem;
+    padding-left: 0.7rem;
+
+    &__button {
+        color: white;
+        background-color: vars.$primaryColor;
+        border: none;
+    }
+}
+
+.settings__close {
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    height: 80px;
+    top: 0;
+    right: 0;
+    width: 15%;
+}
