@@ -14,7 +14,12 @@ function Settings() {
         <div className="settings">
             <OpenButton />
             <form
-            className='settings-form'>
+            className='settings-form'
+            onSubmit={(event) => {
+                event.preventDefault();
+                // on lance ici notre connexion à l'API
+                dispatch({type: 'SUBMIT_LOGIN'});
+            }}>
             <input
             placeholder="Email" 
             type='text'
