@@ -3,6 +3,7 @@ import axios from 'axios';
 const authMiddleware = (store) => (next) => (action) => {
 
   if (action.type === 'SUBMIT_LOGIN') {
+  next (action);
   const state = store.getState ();
 
   const config = {

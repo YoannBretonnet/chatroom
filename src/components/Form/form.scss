@@ -33,4 +33,9 @@
         color: gray;
     }
 
+    &:disabled {
+        background-color: transparent; 
+        color: transparent
+    }
+
 }

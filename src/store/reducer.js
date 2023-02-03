@@ -21,6 +21,7 @@ const initialState = {
         areOpen: true,
         emailValue:'bouclierman@herocorp.io',
         passwordValue: 'jennifer',
+        isLoading: false,
 
     }
     
@@ -68,10 +69,22 @@ const reducer = (state = initialState, action) => {
                     [action.inputKey]: action.newValue
                 }
             }
+        case 'SUBMIT_LOGIN':
+            return {
+                ...state,
+                settings: {
+                    ...state.settings,
+                    isLoading: true,
+                }
+             }
         case 'SUBMIT_LOGIN_SUCCESS':
             return {
                 ...state,
                 nickname: action.nickname,
+                settings: {
+                    ...state.settings,
+                    isLoading: false
+                }
             }
 
             default:

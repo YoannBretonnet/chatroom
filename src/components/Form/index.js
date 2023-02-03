@@ -47,6 +47,7 @@ function Form () {
         <button 
         type='submit'
         className="message-button"
+        disabled= {!isLogged}
          > 
         <Send 
           size= {25}

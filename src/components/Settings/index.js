@@ -4,7 +4,7 @@ import { changeSettingsFields } from 'src/store/actions';
 import './settings.scss'
 
 function Settings() {
-    const {areOpen, emailValue, passwordValue} = useSelector ((state) => state.settings);
+    const {areOpen, emailValue, passwordValue, isLoading} = useSelector ((state) => state.settings);
       
     const dispatch = useDispatch();
 
@@ -13,6 +13,7 @@ function Settings() {
         areOpen?
         <div className="settings">
             <OpenButton />
+            {isLoading&& <p>chargement en cours</p>}
             <form
             className='settings-form'
             onSubmit={(event) => {
