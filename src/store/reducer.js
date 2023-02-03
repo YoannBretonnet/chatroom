@@ -15,10 +15,12 @@ const initialState = {
         },
     ],
     inputMessageValue: '',
+    // pseudo de l'utilisateur
+    nickname: null,
     settings: {
         areOpen: true,
-        emailValue:'hfj',
-        passwordValue: '213',
+        emailValue:'bouclierman@herocorp.io',
+        passwordValue: 'jennifer',
 
     }
     
@@ -43,7 +45,7 @@ const reducer = (state = initialState, action) => {
                         // je récupère le plus grand id et j'ajoute 1
                         id: getHighestId(state) + 1,
                         content: state.inputMessageValue,
-                        author: 'Toto',
+                        author: state.nickname,
                     }
                 ],
                 // je remets la valeur de l'input à vide
@@ -65,6 +67,11 @@ const reducer = (state = initialState, action) => {
                     ...state.settings,
                     [action.inputKey]: action.newValue
                 }
+            }
+        case 'SUBMIT_LOGIN_SUCCESS':
+            return {
+                ...state,
+                nickname: action.nickname,
             }
 
             default:

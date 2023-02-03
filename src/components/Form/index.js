@@ -8,6 +8,7 @@ import './form.scss';
 import {Send} from 'react-feather';
 
 function Form () {
+  const isLogged = useSelector( (state) => state.nickname !== null)
   const inputMessage = useSelector ((state) => state.inputMessageValue)
   const dispatch = useDispatch();
   const inputRef = useRef(null);
@@ -35,6 +36,7 @@ function Form () {
           className="message-input"
           ref= {inputRef}
           required
+          disabled= {!isLogged}
           type='text'
           value={inputMessage}
           placeholder= 'Saisissez votre message...'
