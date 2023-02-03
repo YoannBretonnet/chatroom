@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 function Message({author, content}) {
+const isMine = useSelector ((state) => state.nickname ===  author);
 return (
-    <div className="message">
+    <div className= {isMine ? 'message message--mine' : 'message'}>
         <div className="message__author">{author}</div>
         <div className="message__content">{content}</div>
     </div>
