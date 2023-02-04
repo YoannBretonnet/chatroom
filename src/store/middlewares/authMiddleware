@@ -9,7 +9,7 @@ const authMiddleware = (store) => (next) => (action) => {
 
   const config = {
   method: 'post',
-  url: 'https://radiant-cendol-741fe8.netlify.app/.netlify/functions/api/login',
+  url: 'https://chatroom-server-yb.netlify.app/.netlify/functions/api/login',
   headers: { 
     'Content-Type': 'application/json'
   },
