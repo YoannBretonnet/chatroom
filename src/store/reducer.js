@@ -1,4 +1,4 @@
-import {CHANGE_INPUT_MESSAGE, ADD_MESSAGE, TOGGLE_SETTINGS, CHANGE_SETTINGS_FIELDS} from './actions'
+import {CHANGE_INPUT_MESSAGE, ADD_MESSAGE, TOGGLE_SETTINGS, CHANGE_SETTINGS_FIELDS, SUBMIT_LOGIN, SUBMIT_LOGIN_SUCCESS} from './actions'
 import { getHighestId } from './selectors';
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
         },
     ],
     inputMessageValue: '',
-    // pseudo de l'utilisateur
+    // User name
     nickname: null,
     settings: {
         areOpen: true,
@@ -36,12 +36,9 @@ const reducer = (state = initialState, action) => {
             };
         case ADD_MESSAGE:
             return {
-                // je déverse mon ancien state
                 ...state,
                 messages: [
-                    // je récupère les anciens message
                     ...state.messages,
-                    // puis j'ajoute le nouveau
                     {
                         // je récupère le plus grand id et j'ajoute 1
                         id: getHighestId(state) + 1,
@@ -49,7 +46,6 @@ const reducer = (state = initialState, action) => {
                         author: state.nickname,
                     }
                 ],
-                // je remets la valeur de l'input à vide
                 inputMessageValue:'',
             };
         case TOGGLE_SETTINGS:
@@ -69,7 +65,7 @@ const reducer = (state = initialState, action) => {
                     [action.inputKey]: action.newValue
                 }
             }
-        case 'SUBMIT_LOGIN':
+        case SUBMIT_LOGIN:
             return {
                 ...state,
                 settings: {
@@ -77,7 +73,7 @@ const reducer = (state = initialState, action) => {
                     isLoading: true,
                 }
              }
-        case 'SUBMIT_LOGIN_SUCCESS':
+        case SUBMIT_LOGIN_SUCCESS:
             return {
                 ...state,
                 nickname: action.nickname,

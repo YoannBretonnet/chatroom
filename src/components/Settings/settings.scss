@@ -4,32 +4,66 @@
     position: fixed;
     display: flex;
     justify-content: flex-start;
-    height: 80px;
     top: 0;
     right: 0;
-    width: 15%;
-}
+    width: 20%;
+    color: vars.$primaryColor;
 
-.settings-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 0.3rem;
-    padding-left: 0.7rem;
+   &__container {
+        position: relative;
+        width: 100%;
+        height: 7rem;
+ 
+   }
+
+    &__form {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-top: 0.3rem;
+        padding-left: 0.7rem;
+        left: 0px;
+        opacity: 1;
+        transition: left 0.4s, opacity 0.4s;
+
+        &--open {
+            left: 50px;
+            opacity: 0;
+        }
+    
+    }
 
     &__button {
-        color: white;
-        background-color: vars.$primaryColor;
+        color: vars.$darkerColor;
+        background-color: vars.$lighterColor;
         border: none;
+        height: 1.5rem;
+        font-weight: bold;
+
+        &:hover {
+            background-color: vars.$primaryColor;
+            color: white;
+        }
     }
-}
+
+    &__input {
+        margin-bottom: 0.5rem;
+        color: vars.$darkerColor;
+        background-color: white;
+        border: none;
+        height: 1.5rem;
+
+    }
+};
+
+
 
 .settings__close {
     position: fixed;
-    display: flex;
-    justify-content: flex-end;
     height: 80px;
     top: 0;
     right: 0;
-    width: 15%;
-}
+    width: 20%;
+};
+

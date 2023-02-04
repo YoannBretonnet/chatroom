@@ -1,8 +1,9 @@
 import axios from 'axios'; 
+import {SUBMIT_LOGIN, submitLoginSuccess } from 'src/store/actions'
 
 const authMiddleware = (store) => (next) => (action) => {
 
-  if (action.type === 'SUBMIT_LOGIN') {
+  if (action.type === SUBMIT_LOGIN) {
   next (action);
   const state = store.getState ();
 
@@ -20,10 +21,7 @@ const authMiddleware = (store) => (next) => (action) => {
 
   axios(config)
   .then((response) => {
-    store.dispatch({
-      type:'SUBMIT_LOGIN_SUCCESS', 
-      nickname: response.data.pseudo 
-    });
+    store.dispatch(submitLoginSuccess(response.data.pseudo));
   })
   .catch((error) => {
     console.log(error);

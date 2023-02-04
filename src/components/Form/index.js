@@ -20,7 +20,7 @@ function Form () {
   const handleSubmit = (event) => {
     event.preventDefault();   
 
-    // on vérifie que la string n'est pas consituée d'espaces vides
+    // verification that the string doesn't contain any spaces
     if (inputMessage.trim() !== '') {
     dispatch({type: 'ADD_MESSAGE'});
     }
@@ -39,7 +39,7 @@ function Form () {
           disabled= {!isLogged}
           type='text'
           value={inputMessage}
-          placeholder= 'Saisissez votre message...'
+          placeholder= 'Write your message...'
           onChange={(event) => 
             dispatch(changeInputMessage(event.target.value))
             }
