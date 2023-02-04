@@ -1,17 +1,25 @@
-import {CHANGE_INPUT_MESSAGE, ADD_MESSAGE, TOGGLE_SETTINGS, CHANGE_SETTINGS_FIELDS, SUBMIT_LOGIN, SUBMIT_LOGIN_SUCCESS} from './actions'
+import {
+CHANGE_INPUT_MESSAGE, 
+ADD_MESSAGE, TOGGLE_SETTINGS, 
+CHANGE_SETTINGS_FIELDS, 
+SUBMIT_LOGIN, 
+SUBMIT_LOGIN_SUCCESS, 
+SUBMIT_LOGIN_FAILURE, 
+SUBMIT_DECONNEXION
+} from './actions'
 import { getHighestId } from './selectors';
 
 const initialState = {
     messages: [
         {
             id: 1,
-            author: 'Yoyo',
-            content: 'Salut!'
+            author: 'Mark',
+            content: 'Hey!'
         },
         {
             id: 2,
-            author: 'Yoyo',
-            content: 'ça va?'
+            author: 'Mark',
+            content: 'How are you?'
         },
     ],
     inputMessageValue: '',
@@ -19,9 +27,11 @@ const initialState = {
     nickname: null,
     settings: {
         areOpen: true,
-        emailValue:'bouclierman@herocorp.io',
-        passwordValue: 'jennifer',
+        emailValue: '',
+        passwordValue: '',
         isLoading: false,
+        isLogged: false,
+        hasFailed: false,
 
     }
     
@@ -79,7 +89,30 @@ const reducer = (state = initialState, action) => {
                 nickname: action.nickname,
                 settings: {
                     ...state.settings,
-                    isLoading: false
+                    isLoading: false,
+                    isLogged: true,
+                    hasFailed: false
+                }
+            }
+        case SUBMIT_LOGIN_FAILURE:
+                return {
+                    ...state,
+                    settings: {
+                        ...state.settings,
+                        isLoading: false,
+                        hasFailed: true,
+                    }
+                }
+        case SUBMIT_DECONNEXION:
+            return {
+                ...state,
+                nickname: null,
+                settings: {
+                    ...state.settings,
+                    emailValue: '',
+                    passwordValue: '',
+                    isLogged: false,
+                    hasFailed: false
                 }
             }
 

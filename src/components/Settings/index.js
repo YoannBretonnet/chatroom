@@ -1,21 +1,35 @@
 import OpenButton from "./OpenButton";
 import { useSelector, useDispatch } from "react-redux";
-import { changeSettingsFields } from 'src/store/actions';
+import { changeSettingsFields, submitDeconnexion } from 'src/store/actions';
 import './settings.scss'
 
 function Settings() {
-    const {areOpen, emailValue, passwordValue, isLoading} = useSelector ((state) => state.settings);
-      
+    const {areOpen, emailValue, passwordValue, isLoading, isLogged, hasFailed} = useSelector ((state) => state.settings);
+    const nickname = useSelector ((state) => state.nickname);
     const dispatch = useDispatch();
+    const handleOnClick = () => {
+        dispatch(submitDeconnexion());
+        }
 
     return (
-        // affichage conditionnel si l'état du state settingsAreOpen est true
             <div className="settings">
+            {isLogged?
+                <div >
+                <p className='connexionParagraph'>Welcome {nickname} !</p>
+                <button
+                className='connexionButton'
+                onClick={handleOnClick}
+                >
+                Deconnexion
+                </button>
+                </div>
+                :
+                <>
                 <OpenButton />
                 {isLoading&& <p>chargement en cours</p>}
                 <div className='settings__container'>
                     <form
-                    className= {areOpen? 'settings__form settings__form--open' : 'settings__form ' }
+                    className= {!areOpen? 'settings__form settings__form--open' : 'settings__form ' }
                     onSubmit={(event) => {
                         event.preventDefault();
                         // on lance ici notre connexion à l'API
@@ -32,7 +46,7 @@ function Settings() {
                     />
                     <input
                     className='settings__input'
-                    placeholder="Mot de passe"
+                    placeholder="Password"
                     type='password'
                     value={passwordValue}
                     onChange= {(event) => {
@@ -42,11 +56,16 @@ function Settings() {
                     <button
                     className='settings__button'
                     type='submit'>
-                    Envoyer
+                    Connexion
                     </button>
+                    {hasFailed&& 
+                    <p className='failed-message'>
+                       wrong email or password, <br/>try again 
+                    </p>}
                     </form>
-                    {/* <div className= {areOpen?'transitionElement transitionElement--open': 'transitionElement'} /> */}
-                </div>
+                 </div>
+                 </>
+                }
             </div>
     );
 }

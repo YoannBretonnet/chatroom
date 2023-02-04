@@ -1,5 +1,5 @@
 import axios from 'axios'; 
-import {SUBMIT_LOGIN, submitLoginSuccess } from 'src/store/actions'
+import {SUBMIT_LOGIN, submitLoginSuccess, submitLoginFailure } from 'src/store/actions'
 
 const authMiddleware = (store) => (next) => (action) => {
 
@@ -25,6 +25,7 @@ const authMiddleware = (store) => (next) => (action) => {
   })
   .catch((error) => {
     console.log(error);
+    store.dispatch(submitLoginFailure());
   });
 
   } else {

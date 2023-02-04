@@ -67,3 +67,30 @@
     width: 20%;
 };
 
+.connexionParagraph {
+    color: white;
+    padding : 1rem 0 0.5rem 1rem;
+};
+
+.connexionButton {
+        color: vars.$darkerColor;
+        background-color: vars.$lighterColor;
+        margin-left: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: none;
+        height: 1.5rem;
+        font-weight: bold;
+
+        &:hover {
+            background-color: vars.$primaryColor;
+            color: white;
+        }
+
+};
+
+.failed-message {
+    text-align: center;
+    color: rgb(245, 81, 81);
+    margin-top: 0.5rem;
+}
