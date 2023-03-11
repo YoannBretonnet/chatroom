@@ -14,7 +14,7 @@ function Settings() {
     return (
             <div className="settings">
             {isLogged?
-                <div >
+                <div >  
                 <p className='connexionParagraph'>Welcome {nickname} !</p>
                 <button
                 className='connexionButton'
@@ -26,7 +26,6 @@ function Settings() {
                 :
                 <>
                 <OpenButton />
-                {isLoading&& <p>chargement en cours</p>}
                 <div className='settings__container'>
                     <form
                     className= {!areOpen? 'settings__form settings__form--open' : 'settings__form ' }
@@ -64,6 +63,7 @@ function Settings() {
                     </p>}
                     </form>
                  </div>
+                 {isLoading&& <p>chargement en cours</p>}
                  </>
                 }
             </div>
